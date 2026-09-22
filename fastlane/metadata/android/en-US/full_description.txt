@@ -1,0 +1,9 @@
+Colorgram is a free and open-source picture logic puzzle game. Use numerical clues along the rows and columns to fill in grid tiles and reveal hidden colored pixel art images.
+
+Key Features:
+
+100% Free and Open Source (FOSS)
+
+No advertisements, no microtransactions, and no tracking
+
+Multiple grid sizes and difficulty levels 
