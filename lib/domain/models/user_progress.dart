@@ -61,10 +61,11 @@ class UserProgress {
     );
   }
 
-  UserProgress incrementLevel() {
+  UserProgress incrementLevel([int? completedLevel]) {
+    final completed = completedLevel ?? currentLevel;
     return copyWith(
-      currentLevel: currentLevel + 1,
-      highestLevelCompleted: math.max(highestLevelCompleted, currentLevel),
+      currentLevel: math.max(currentLevel, completed + 1),
+      highestLevelCompleted: math.max(highestLevelCompleted, completed),
     );
   }
 

@@ -482,7 +482,11 @@ class LevelGenerator {
     );
   }
 
-  static GameLevel _getHandcraftedForGridSize(int targetSize, int seed) {
+  static GameLevel _getHandcraftedForGridSize(
+    int targetSize,
+    int seed, {
+    int levelNumber = -1,
+  }) {
     List<GameLevel>? list = _catalogByGridSize[targetSize];
     if (list == null || list.isEmpty) {
       int closestSize = 5;
@@ -508,7 +512,7 @@ class LevelGenerator {
     final newPalette = selectedPalette.sublist(0, min(template.palette.length, selectedPalette.length));
 
     return GameLevel(
-      levelNumber: -1,
+      levelNumber: levelNumber,
       name: template.name,
       gridSize: template.gridSize,
       palette: newPalette,
@@ -614,7 +618,11 @@ class LevelGenerator {
   }) {
     if (gridSize > 8) {
       final fallbackSeed = seedOverride ?? (levelNumber * 31337);
-      return _getHandcraftedForGridSize(gridSize, fallbackSeed);
+      return _getHandcraftedForGridSize(
+        gridSize,
+        fallbackSeed,
+        levelNumber: levelNumber,
+      );
     }
 
     int seedOffset = 0;
@@ -684,7 +692,11 @@ class LevelGenerator {
     }
 
     final fallbackSeed = seedOverride ?? (levelNumber * 31337);
-    return _getHandcraftedForGridSize(gridSize, fallbackSeed);
+    return _getHandcraftedForGridSize(
+      gridSize,
+      fallbackSeed,
+      levelNumber: levelNumber,
+    );
   }
 
   int _countSolutions(

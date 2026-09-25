@@ -36,10 +36,7 @@ class ProgressRepository extends ChangeNotifier {
 
   Future<void> completeLevel(int levelNumber, int moves) async {
     final current = await getProgress();
-    final isNewCompletion = levelNumber == current.highestLevelCompleted + 1;
-    final updated = isNewCompletion
-        ? current.incrementLevel().addMoves(moves)
-        : current.addMoves(moves);
+    final updated = current.incrementLevel(levelNumber).addMoves(moves);
     await saveProgress(updated);
   }
 
