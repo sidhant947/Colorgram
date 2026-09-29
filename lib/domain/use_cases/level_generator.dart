@@ -23,505 +23,6 @@ class LevelGenerator {
     [Color(0xFF06D6A0), Color(0xFF118AB2), Color(0xFFEF476F)],
   ];
 
-  static final List<GameLevel> _handcraftedLevels = [
-    _buildHandcrafted(
-      number: 1,
-      name: 'CHERRY',
-      size: 5,
-      palette: const [Color(0xFF4CAF50), Color(0xFFE53935)],
-      grid: [
-        [0, 1, 0, 1, 0],
-        [0, 1, 0, 1, 0],
-        [0, 0, 1, 0, 0],
-        [2, 2, 0, 2, 2],
-        [2, 2, 0, 2, 2],
-      ],
-    ),
-    _buildHandcrafted(
-      number: 2,
-      name: 'HEART',
-      size: 5,
-      palette: const [Color(0xFFEF233C), Color(0xFFFF758F)],
-      grid: [
-        [1, 0, 0, 0, 1],
-        [1, 1, 0, 1, 1],
-        [0, 1, 0, 1, 0],
-        [0, 2, 2, 2, 0],
-        [0, 0, 2, 0, 0],
-      ],
-    ),
-    _buildHandcrafted(
-      number: 3,
-      name: 'MUSHROOM',
-      size: 5,
-      palette: const [Color(0xFFE63946), Color(0xFFF4A261)],
-      grid: [
-        [0, 1, 1, 1, 0],
-        [1, 1, 1, 1, 1],
-        [0, 0, 0, 0, 0],
-        [0, 2, 2, 2, 0],
-        [0, 2, 2, 2, 0],
-      ],
-    ),
-    _buildHandcrafted(
-      number: 4,
-      name: 'SAILBOAT',
-      size: 5,
-      palette: const [Color(0xFFE0E1DD), Color(0xFF1D3557)],
-      grid: [
-        [0, 0, 1, 0, 0],
-        [0, 1, 1, 0, 0],
-        [1, 1, 1, 0, 0],
-        [0, 0, 0, 0, 0],
-        [2, 2, 2, 2, 2],
-      ],
-    ),
-    _buildHandcrafted(
-      number: 5,
-      name: 'DUCK',
-      size: 5,
-      palette: const [Color(0xFFFFD166), Color(0xFFF77F00)],
-      grid: [
-        [0, 1, 1, 0, 2],
-        [0, 1, 1, 0, 0],
-        [0, 0, 0, 0, 0],
-        [1, 1, 1, 1, 0],
-        [0, 1, 1, 0, 0],
-      ],
-    ),
-    _buildHandcrafted(
-      number: 6,
-      name: 'COFFEE',
-      size: 6,
-      palette: const [Color(0xFF8B5E3C), Color(0xFF48CAE4)],
-      grid: [
-        [0, 2, 0, 2, 0, 0],
-        [0, 0, 0, 0, 0, 0],
-        [1, 1, 1, 1, 0, 1],
-        [1, 1, 1, 1, 0, 1],
-        [1, 1, 1, 1, 0, 0],
-        [0, 1, 1, 0, 0, 0],
-      ],
-    ),
-    _buildHandcrafted(
-      number: 7,
-      name: 'FLOWER',
-      size: 6,
-      palette: const [Color(0xFFFFD166), Color(0xFF9B5DE5), Color(0xFF2A9D8F)],
-      grid: [
-        [0, 2, 0, 0, 2, 0],
-        [2, 0, 1, 1, 0, 2],
-        [0, 2, 0, 0, 2, 0],
-        [0, 0, 3, 0, 0, 0],
-        [0, 3, 3, 0, 0, 0],
-        [0, 0, 3, 0, 0, 0],
-      ],
-    ),
-    _buildHandcrafted(
-      number: 8,
-      name: 'CROWN',
-      size: 6,
-      palette: const [Color(0xFFFFB703), Color(0xFFD90429)],
-      grid: [
-        [2, 0, 2, 0, 2, 0],
-        [1, 0, 1, 0, 1, 0],
-        [1, 1, 1, 1, 1, 0],
-        [0, 0, 0, 0, 0, 0],
-        [1, 1, 1, 1, 1, 0],
-        [0, 2, 0, 2, 0, 0],
-      ],
-    ),
-    _buildHandcrafted(
-      number: 9,
-      name: 'TREE',
-      size: 6,
-      palette: const [Color(0xFF38B000), Color(0xFF7F4F24)],
-      grid: [
-        [0, 0, 1, 1, 0, 0],
-        [0, 1, 1, 1, 1, 0],
-        [1, 1, 1, 1, 1, 1],
-        [0, 0, 0, 0, 0, 0],
-        [0, 0, 2, 2, 0, 0],
-        [0, 0, 2, 2, 0, 0],
-      ],
-    ),
-    _buildHandcrafted(
-      number: 10,
-      name: 'FISH',
-      size: 6,
-      palette: const [Color(0xFFFB8500), Color(0xFF219EBC)],
-      grid: [
-        [0, 0, 1, 1, 0, 2],
-        [0, 1, 1, 1, 0, 2],
-        [1, 1, 1, 1, 0, 2],
-        [0, 1, 1, 1, 0, 2],
-        [0, 0, 1, 1, 0, 2],
-        [0, 0, 0, 0, 0, 0],
-      ],
-    ),
-    _buildHandcrafted(
-      number: 11,
-      name: 'ROCKET',
-      size: 7,
-      palette: const [Color(0xFFEF233C), Color(0xFFEDF2F4), Color(0xFFFF7900)],
-      grid: [
-        [0, 0, 0, 1, 0, 0, 0],
-        [0, 0, 1, 1, 1, 0, 0],
-        [0, 0, 2, 2, 2, 0, 0],
-        [0, 0, 2, 2, 2, 0, 0],
-        [0, 1, 0, 2, 0, 1, 0],
-        [0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 3, 0, 0, 0],
-      ],
-    ),
-    _buildHandcrafted(
-      number: 12,
-      name: 'SWORD',
-      size: 7,
-      palette: const [Color(0xFF00B4D8), Color(0xFFFFB703), Color(0xFFD90429)],
-      grid: [
-        [0, 0, 0, 0, 0, 0, 1],
-        [0, 0, 0, 0, 0, 1, 0],
-        [0, 0, 0, 0, 1, 0, 0],
-        [0, 0, 0, 1, 0, 0, 0],
-        [0, 2, 2, 0, 0, 0, 0],
-        [0, 0, 3, 2, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0],
-      ],
-    ),
-    _buildHandcrafted(
-      number: 13,
-      name: 'HOUSE',
-      size: 7,
-      palette: const [Color(0xFFE63946), Color(0xFFF4A261), Color(0xFF457B9D)],
-      grid: [
-        [0, 0, 0, 1, 0, 0, 0],
-        [0, 0, 1, 1, 1, 0, 0],
-        [0, 1, 1, 1, 1, 1, 0],
-        [0, 0, 0, 0, 0, 0, 0],
-        [0, 2, 0, 3, 0, 2, 0],
-        [0, 2, 0, 3, 0, 2, 0],
-        [0, 2, 2, 2, 2, 2, 0],
-      ],
-    ),
-    _buildHandcrafted(
-      number: 14,
-      name: 'CACTUS',
-      size: 7,
-      palette: const [Color(0xFF2A9D8F), Color(0xFFE9C46A)],
-      grid: [
-        [0, 0, 0, 1, 0, 0, 0],
-        [0, 1, 0, 1, 0, 0, 0],
-        [0, 1, 1, 1, 0, 1, 0],
-        [0, 0, 0, 1, 1, 1, 0],
-        [0, 0, 0, 1, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0],
-        [0, 2, 2, 2, 2, 2, 0],
-      ],
-    ),
-    _buildHandcrafted(
-      number: 15,
-      name: 'DIAMOND',
-      size: 7,
-      palette: const [Color(0xFF48CAE4), Color(0xFF023E8A)],
-      grid: [
-        [0, 0, 0, 1, 0, 0, 0],
-        [0, 0, 1, 0, 1, 0, 0],
-        [0, 1, 0, 2, 0, 1, 0],
-        [1, 0, 2, 2, 2, 0, 1],
-        [0, 1, 0, 2, 0, 1, 0],
-        [0, 0, 1, 0, 1, 0, 0],
-        [0, 0, 0, 1, 0, 0, 0],
-      ],
-    ),
-    _buildHandcrafted(
-      number: 16,
-      name: 'SHIELD',
-      size: 8,
-      palette: const [Color(0xFFFFB703), Color(0xFF1D3557)],
-      grid: [
-        [0, 1, 1, 1, 1, 1, 1, 0],
-        [1, 2, 2, 0, 0, 2, 2, 1],
-        [1, 2, 2, 0, 0, 2, 2, 1],
-        [1, 0, 0, 2, 2, 0, 0, 1],
-        [0, 1, 2, 2, 2, 2, 1, 0],
-        [0, 0, 1, 2, 2, 1, 0, 0],
-        [0, 0, 0, 1, 1, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0],
-      ],
-    ),
-    _buildHandcrafted(
-      number: 17,
-      name: 'BUTTERFLY',
-      size: 8,
-      palette: const [Color(0xFF9B5DE5), Color(0xFF00F5D4)],
-      grid: [
-        [1, 1, 0, 2, 2, 0, 1, 1],
-        [1, 0, 1, 0, 0, 1, 0, 1],
-        [1, 0, 0, 0, 0, 0, 0, 1],
-        [0, 1, 1, 0, 0, 1, 1, 0],
-        [0, 2, 0, 0, 0, 0, 2, 0],
-        [0, 1, 2, 0, 0, 2, 1, 0],
-        [0, 0, 1, 0, 0, 1, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0],
-      ],
-    ),
-    _buildHandcrafted(
-      number: 18,
-      name: 'APPLE',
-      size: 8,
-      palette: const [Color(0xFF06D6A0), Color(0xFFEF233C)],
-      grid: [
-        [0, 0, 0, 0, 1, 1, 0, 0],
-        [0, 0, 0, 1, 0, 0, 0, 0],
-        [0, 2, 2, 0, 2, 2, 0, 0],
-        [2, 2, 2, 2, 2, 2, 2, 0],
-        [2, 2, 2, 2, 2, 2, 2, 0],
-        [2, 2, 2, 2, 2, 2, 2, 0],
-        [0, 2, 2, 2, 2, 2, 0, 0],
-        [0, 0, 2, 0, 2, 0, 0, 0],
-      ],
-    ),
-    _buildHandcrafted(
-      number: 19,
-      name: 'POTION',
-      size: 8,
-      palette: const [Color(0xFFD4A373), Color(0xFF7209B7)],
-      grid: [
-        [0, 0, 0, 1, 1, 0, 0, 0],
-        [0, 0, 0, 1, 1, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 1, 1, 1, 1, 0, 0],
-        [0, 1, 2, 2, 2, 2, 1, 0],
-        [1, 2, 2, 2, 2, 2, 2, 1],
-        [1, 2, 2, 2, 2, 2, 2, 1],
-        [0, 1, 1, 1, 1, 1, 1, 0],
-      ],
-    ),
-    _buildHandcrafted(
-      number: 20,
-      name: 'GHOST',
-      size: 8,
-      palette: const [Color(0xFFF8F9FA), Color(0xFF1D3557)],
-      grid: [
-        [0, 0, 1, 1, 1, 1, 0, 0],
-        [0, 1, 1, 1, 1, 1, 1, 0],
-        [1, 1, 2, 1, 1, 2, 1, 1],
-        [1, 1, 2, 1, 1, 2, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 1, 1, 2, 2, 1, 1, 1],
-        [1, 1, 1, 1, 1, 1, 1, 1],
-        [1, 0, 1, 0, 0, 1, 0, 1],
-      ],
-    ),
-  ];
-
-  static final Map<int, List<GameLevel>> _catalogByGridSize = {
-    8: [
-      _handcraftedLevels[15],
-      _handcraftedLevels[16],
-      _handcraftedLevels[17],
-      _handcraftedLevels[18],
-      _handcraftedLevels[19],
-    ],
-    10: [
-      _buildHandcrafted(
-        number: 101,
-        name: 'CASTLE',
-        size: 10,
-        palette: const [Color(0xFF90A4AE), Color(0xFFEF5350), Color(0xFF1E88E5)],
-        grid: [
-          [1, 0, 1, 0, 2, 2, 0, 1, 0, 1],
-          [1, 1, 1, 0, 2, 2, 0, 1, 1, 1],
-          [1, 1, 1, 0, 1, 1, 0, 1, 1, 1],
-          [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-          [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-          [1, 3, 1, 1, 1, 1, 1, 1, 3, 1],
-          [1, 3, 1, 0, 3, 3, 0, 1, 3, 1],
-          [1, 1, 1, 0, 3, 3, 0, 1, 1, 1],
-          [1, 1, 1, 0, 3, 3, 0, 1, 1, 1],
-          [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        ],
-      ),
-      _buildHandcrafted(
-        number: 102,
-        name: 'SPACESHIP',
-        size: 10,
-        palette: const [Color(0xFF00B4D8), Color(0xFFFFB703), Color(0xFFF72585)],
-        grid: [
-          [0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
-          [0, 0, 0, 1, 2, 2, 1, 0, 0, 0],
-          [0, 0, 1, 1, 2, 2, 1, 1, 0, 0],
-          [0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
-          [0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-          [1, 1, 0, 1, 1, 1, 1, 0, 1, 1],
-          [1, 0, 0, 1, 1, 1, 1, 0, 0, 1],
-          [0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 3, 0, 0, 3, 0, 0, 0],
-        ],
-      ),
-      _buildHandcrafted(
-        number: 103,
-        name: 'LIGHTHOUSE',
-        size: 10,
-        palette: const [Color(0xFFE63946), Color(0xFFF1FAEE), Color(0xFFFFD166)],
-        grid: [
-          [0, 0, 0, 0, 3, 3, 0, 0, 0, 0],
-          [0, 0, 0, 3, 2, 2, 3, 0, 0, 0],
-          [0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
-          [0, 0, 0, 0, 2, 2, 0, 0, 0, 0],
-          [0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
-          [0, 0, 0, 2, 2, 2, 2, 0, 0, 0],
-          [0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
-          [0, 0, 2, 2, 2, 2, 2, 2, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        ],
-      ),
-      _buildHandcrafted(
-        number: 104,
-        name: 'SWORD_SHIELD',
-        size: 10,
-        palette: const [Color(0xFFCFD8DC), Color(0xFFFFB300), Color(0xFF0288D1)],
-        grid: [
-          [0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
-          [0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
-          [0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
-          [0, 2, 2, 2, 2, 2, 2, 2, 2, 0],
-          [0, 0, 0, 0, 2, 2, 0, 0, 0, 0],
-          [0, 0, 0, 3, 3, 3, 3, 0, 0, 0],
-          [0, 0, 3, 3, 2, 2, 3, 3, 0, 0],
-          [0, 0, 3, 3, 2, 2, 3, 3, 0, 0],
-          [0, 0, 0, 3, 3, 3, 3, 0, 0, 0],
-          [0, 0, 0, 0, 3, 3, 0, 0, 0, 0],
-        ],
-      ),
-    ],
-    12: [
-      _buildHandcrafted(
-        number: 201,
-        name: 'GALLEON',
-        size: 12,
-        palette: const [Color(0xFF8D6E63), Color(0xFFECEFF1), Color(0xFF0288D1)],
-        grid: [
-          [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 2, 2, 0, 0, 2, 0, 0, 0, 0],
-          [0, 0, 2, 2, 2, 0, 2, 2, 0, 0, 0, 0],
-          [0, 2, 2, 2, 2, 0, 2, 2, 2, 0, 0, 0],
-          [0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0],
-          [0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0],
-          [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
-          [0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
-          [0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
-          [0, 3, 3, 0, 3, 3, 0, 3, 3, 0, 3, 3],
-        ],
-      ),
-      _buildHandcrafted(
-        number: 202,
-        name: 'PHOENIX',
-        size: 12,
-        palette: const [Color(0xFFD00000), Color(0xFFFF7900), Color(0xFFFFBA08)],
-        grid: [
-          [0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 1, 3, 3, 1, 0, 0, 0, 0],
-          [1, 0, 0, 1, 1, 2, 2, 1, 1, 0, 0, 1],
-          [1, 1, 0, 2, 2, 2, 2, 2, 2, 0, 1, 1],
-          [0, 1, 2, 2, 3, 3, 3, 3, 2, 2, 1, 0],
-          [0, 0, 1, 2, 3, 2, 2, 3, 2, 1, 0, 0],
-          [0, 0, 0, 1, 2, 2, 2, 2, 1, 0, 0, 0],
-          [0, 0, 0, 0, 1, 2, 2, 1, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 2, 3, 3, 2, 0, 0, 0, 0],
-          [0, 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0],
-          [0, 0, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0],
-        ],
-      ),
-      _buildHandcrafted(
-        number: 203,
-        name: 'TEMPLE',
-        size: 12,
-        palette: const [Color(0xFFD4A373), Color(0xFFB7094C), Color(0xFF0077B6)],
-        grid: [
-          [0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0],
-          [0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0],
-          [0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
-          [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-          [0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0],
-          [0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0],
-          [0, 0, 1, 0, 1, 3, 3, 1, 0, 1, 0, 0],
-          [0, 0, 1, 0, 1, 3, 3, 1, 0, 1, 0, 0],
-          [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-          [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        ],
-      ),
-    ],
-  };
-
-  static GameLevel _buildHandcrafted({
-    required int number,
-    required String name,
-    required int size,
-    required List<Color> palette,
-    required List<List<int>> grid,
-  }) {
-    final rowClues = ColorgramRules.computeRowClues(grid, size);
-    final colClues = ColorgramRules.computeColClues(grid, size);
-    return GameLevel(
-      levelNumber: number,
-      name: name,
-      gridSize: size,
-      palette: palette,
-      solutionGrid: grid,
-      rowClues: rowClues,
-      colClues: colClues,
-    );
-  }
-
-  static GameLevel _getHandcraftedForGridSize(
-    int targetSize,
-    int seed, {
-    int levelNumber = -1,
-  }) {
-    List<GameLevel>? list = _catalogByGridSize[targetSize];
-    if (list == null || list.isEmpty) {
-      int closestSize = 5;
-      for (final s in [5, 6, 7, 8, 10, 12]) {
-        if ((s - targetSize).abs() < (closestSize - targetSize).abs()) {
-          closestSize = s;
-        }
-      }
-      if (closestSize == 5) {
-        list = _handcraftedLevels.sublist(0, 5);
-      } else if (closestSize == 6) {
-        list = _handcraftedLevels.sublist(5, 10);
-      } else if (closestSize == 7) {
-        list = _handcraftedLevels.sublist(10, 15);
-      } else {
-        list = _catalogByGridSize[closestSize] ?? _handcraftedLevels.sublist(0, 5);
-      }
-    }
-
-    final template = list[seed.abs() % list.length];
-    final palIdx = seed.abs() % _palettes.length;
-    final selectedPalette = _palettes[palIdx];
-    final newPalette = selectedPalette.sublist(0, min(template.palette.length, selectedPalette.length));
-
-    return GameLevel(
-      levelNumber: levelNumber,
-      name: template.name,
-      gridSize: template.gridSize,
-      palette: newPalette,
-      solutionGrid: template.solutionGrid,
-      rowClues: template.rowClues,
-      colClues: template.colClues,
-    );
-  }
-
   LevelGenerator({bool pregenerate = true}) {
     if (pregenerate) {
       pregenerateBatch(1, count: 3);
@@ -556,10 +57,6 @@ class LevelGenerator {
   }
 
   GameLevel _generateInternal(int levelNumber) {
-    if (levelNumber >= 1 && levelNumber <= _handcraftedLevels.length) {
-      return _handcraftedLevels[levelNumber - 1];
-    }
-
     final gridSize = _getGridSize(levelNumber);
     final colorCount = _getColorCount(levelNumber);
     final paletteIndex = (levelNumber - 1).abs() % _palettes.length;
@@ -567,7 +64,7 @@ class LevelGenerator {
     final palette = selectedPalette.sublist(0, min(colorCount, selectedPalette.length));
     return _generateProceduralLevel(
       levelNumber: levelNumber,
-      name: 'PUZZLE $levelNumber',
+      name: 'LEVEL $levelNumber',
       gridSize: gridSize,
       palette: palette,
     );
@@ -616,39 +113,51 @@ class LevelGenerator {
     required List<Color> palette,
     int? seedOverride,
   }) {
-    if (gridSize > 8) {
-      final fallbackSeed = seedOverride ?? (levelNumber * 31337);
-      return _getHandcraftedForGridSize(
-        gridSize,
-        fallbackSeed,
-        levelNumber: levelNumber,
-      );
-    }
-
     int seedOffset = 0;
     final colorCount = palette.length;
-    int attempts = 0;
+    final isAsymmetric = gridSize > 5 || levelNumber > 5;
+    final minRounds = gridSize <= 5 && levelNumber <= 5
+        ? 1
+        : ((gridSize <= 7 && levelNumber <= 15) ? 2 : 3);
+    GameLevel? fallbackLevel;
 
-    while (attempts < 20) {
-      attempts++;
+    while (true) {
       final seed = seedOverride != null
           ? (seedOverride + seedOffset) & 0x7FFFFFFF
           : ((levelNumber * 31337 + seedOffset * 7919) & 0x7FFFFFFF);
       seedOffset++;
       final random = Random(seed);
 
-      final half = (gridSize / 2).ceil();
       final grid = List.generate(
         gridSize,
         (_) => List<int>.filled(gridSize, 0),
       );
+      final fillProb = 0.44 + random.nextDouble() * 0.12;
 
-      for (int r = 0; r < gridSize; r++) {
-        for (int c = 0; c < half; c++) {
-          if (random.nextDouble() < 0.50) {
-            final color = 1 + random.nextInt(colorCount);
-            grid[r][c] = color;
-            grid[r][gridSize - 1 - c] = color;
+      if (!isAsymmetric) {
+        final half = (gridSize / 2).ceil();
+        for (int r = 0; r < gridSize; r++) {
+          for (int c = 0; c < half; c++) {
+            if (random.nextDouble() < fillProb) {
+              final color = 1 + random.nextInt(colorCount);
+              grid[r][c] = color;
+              grid[r][gridSize - 1 - c] = color;
+            }
+          }
+        }
+      } else {
+        for (int r = 0; r < gridSize; r++) {
+          for (int c = 0; c < gridSize; c++) {
+            if (random.nextDouble() < fillProb) {
+              grid[r][c] = 1 + random.nextInt(colorCount);
+            }
+          }
+        }
+        for (int r = 0; r < gridSize; r++) {
+          for (int c = 1; c < gridSize; c++) {
+            if (grid[r][c - 1] > 0 && grid[r][c] == 0 && random.nextDouble() < 0.42) {
+              grid[r][c] = grid[r][c - 1];
+            }
           }
         }
       }
@@ -677,8 +186,20 @@ class LevelGenerator {
           break;
         }
       }
+      if (!valid) continue;
 
-      if (valid && _countSolutions(gridSize, rowClues, colClues) == 1) {
+      fallbackLevel ??= GameLevel(
+        levelNumber: levelNumber,
+        name: name,
+        gridSize: gridSize,
+        palette: palette,
+        solutionGrid: grid,
+        rowClues: rowClues,
+        colClues: colClues,
+      );
+
+      final effectiveMinRounds = seedOffset > 30 ? 1 : minRounds;
+      if (_countSolutions(gridSize, rowClues, colClues, minRounds: effectiveMinRounds) == 1) {
         return GameLevel(
           levelNumber: levelNumber,
           name: name,
@@ -689,23 +210,19 @@ class LevelGenerator {
           colClues: colClues,
         );
       }
-    }
 
-    final fallbackSeed = seedOverride ?? (levelNumber * 31337);
-    return _getHandcraftedForGridSize(
-      gridSize,
-      fallbackSeed,
-      levelNumber: levelNumber,
-    );
+      if (seedOffset > 50) {
+        return fallbackLevel;
+      }
+    }
   }
 
   int _countSolutions(
     int size,
     List<List<ColorClue>> rowClues,
-    List<List<ColorClue>> colClues,
-  ) {
-    if (size > 8) return 0;
-
+    List<List<ColorClue>> colClues, {
+    int minRounds = 1,
+  }) {
     int solutionsFound = 0;
     int statesVisited = 0;
     bool searchAborted = false;
@@ -721,8 +238,10 @@ class LevelGenerator {
     }
 
     bool changed = true;
+    int rounds = 0;
     while (changed) {
       changed = false;
+      rounds++;
       for (int r = 0; r < size; r++) {
         if (rowPossibilities[r].isEmpty) return 0;
         for (int c = 0; c < size; c++) {
@@ -767,6 +286,8 @@ class LevelGenerator {
         }
       }
     }
+
+    if (rounds < minRounds) return 0;
 
     bool allSingle = true;
     for (int r = 0; r < size; r++) {
@@ -865,7 +386,8 @@ class LevelGenerator {
     for (int i = clues.length - 1; i >= 0; i--) {
       int len = clues[i].count;
       if (i < clues.length - 1) {
-        len += 1 + minSuffixLengths[i + 1];
+        final sep = clues[i].colorIndex == clues[i + 1].colorIndex ? 1 : 0;
+        len += sep + minSuffixLengths[i + 1];
       }
       minSuffixLengths[i] = len;
     }
@@ -880,13 +402,16 @@ class LevelGenerator {
       final blockLen = clue.count;
       final color = clue.colorIndex;
       final maxStart = size - minSuffixLengths[clueIdx];
+      final isLast = clueIdx == clues.length - 1;
+      final nextColor = isLast ? -1 : clues[clueIdx + 1].colorIndex;
+      final sep = (!isLast && color == nextColor) ? 1 : 0;
 
       for (int start = currentPos; start <= maxStart; start++) {
         for (int i = start; i < start + blockLen; i++) {
           line[i] = color;
         }
 
-        final nextPos = start + blockLen + 1;
+        final nextPos = start + blockLen + sep;
         build(clueIdx + 1, nextPos, line);
 
         for (int i = start; i < start + blockLen; i++) {
