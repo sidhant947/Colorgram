@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -30,6 +31,15 @@ class GameView extends ConsumerStatefulWidget {
 
 class _GameViewState extends ConsumerState<GameView> {
   int? _lastDraggedCell;
+  int? _dragTargetValue;
+  final Set<int> _activePointers = {};
+  Timer? _longPressTimer;
+
+  @override
+  void dispose() {
+    _longPressTimer?.cancel();
+    super.dispose();
+  }
 
   @override
   void initState() {
@@ -121,6 +131,7 @@ class _GameViewState extends ConsumerState<GameView> {
                           child: InteractiveViewer(
                             minScale: 0.8,
                             maxScale: 4.0,
+                            panEnabled: false,
                             boundaryMargin: const EdgeInsets.all(40.0),
                             clipBehavior: Clip.none,
                             child: Center(
@@ -632,112 +643,151 @@ class _GameViewState extends ConsumerState<GameView> {
         return FittedBox(
           fit: BoxFit.contain,
           alignment: Alignment.center,
-          child: Table(
-            columnWidths: {
-              0: FixedColumnWidth(rowClueWidth),
-              for (int c = 0; c < size; c++) c + 1: FixedColumnWidth(cellSize),
+          child: Listener(
+            onPointerDown: (event) {
+              _activePointers.add(event.pointer);
+              if (_activePointers.length == 1) {
+                final colX = event.localPosition.dx - rowClueWidth;
+                final rowY = event.localPosition.dy - clueHeight;
+                if (colX >= 0 && colX < size * cellSize && rowY >= 0 && rowY < size * cellSize) {
+                  final c = (colX / cellSize).floor();
+                  final r = (rowY / cellSize).floor();
+                  _dragTargetValue = state.board[r][c] == state.selectedTool ? 0 : state.selectedTool;
+                  _lastDraggedCell = r * size + c;
+                  vm.setCell(r, c, _dragTargetValue!);
+                  _longPressTimer?.cancel();
+                  if (ref.read(progressRepositoryProvider).longPressToCrossEnabled) {
+                    _longPressTimer = Timer(const Duration(milliseconds: 400), () {
+                      if (_dragTargetValue != null && _activePointers.length == 1) {
+                        if (ref.read(progressRepositoryProvider).hapticsEnabled) {
+                          HapticFeedback.mediumImpact();
+                        }
+                        vm.setCell(r, c, -1);
+                        _dragTargetValue = null;
+                      }
+                    });
+                  }
+                }
+              } else {
+                _longPressTimer?.cancel();
+                _dragTargetValue = null;
+                _lastDraggedCell = null;
+              }
             },
-            children: [
-              TableRow(
-                children: [
-                  const SizedBox.shrink(),
-                  for (int c = 0; c < size; c++)
-                    Builder(
-                      builder: (context) {
-                        final isColComplete = ColorgramRules.isColSatisfied(
-                          state.board,
-                          level.colClues[c],
-                          c,
-                        );
-                        return Container(
-                          height: clueHeight,
-                          alignment: Alignment.bottomCenter,
-                          padding: const EdgeInsets.only(bottom: 4),
-                          child: FittedBox(
-                            fit: BoxFit.scaleDown,
-                            alignment: Alignment.bottomCenter,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: level.colClues[c]
-                                  .map(
-                                    (clue) => _buildClueBadge(
-                                      clue,
-                                      level.palette,
-                                      badgeSize,
-                                      isSatisfied: isColComplete,
-                                    ),
-                                  )
-                                  .toList(),
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                ],
-              ),
-
-              for (int r = 0; r < size; r++)
+            onPointerMove: (event) {
+              _longPressTimer?.cancel();
+              if (_activePointers.length == 1 && _dragTargetValue != null) {
+                final colX = event.localPosition.dx - rowClueWidth;
+                final rowY = event.localPosition.dy - clueHeight;
+                if (colX >= 0 && colX < size * cellSize && rowY >= 0 && rowY < size * cellSize) {
+                  final c = (colX / cellSize).floor();
+                  final r = (rowY / cellSize).floor();
+                  final cellId = r * size + c;
+                  if (_lastDraggedCell != cellId) {
+                    _lastDraggedCell = cellId;
+                    if (state.board[r][c] != _dragTargetValue) {
+                      vm.setCell(r, c, _dragTargetValue!);
+                    }
+                  }
+                }
+              }
+            },
+            onPointerUp: (event) {
+              _longPressTimer?.cancel();
+              _activePointers.remove(event.pointer);
+              if (_activePointers.isEmpty) {
+                _dragTargetValue = null;
+                _lastDraggedCell = null;
+              }
+            },
+            onPointerCancel: (event) {
+              _longPressTimer?.cancel();
+              _activePointers.remove(event.pointer);
+              if (_activePointers.isEmpty) {
+                _dragTargetValue = null;
+                _lastDraggedCell = null;
+              }
+            },
+            child: Table(
+              columnWidths: {
+                0: FixedColumnWidth(rowClueWidth),
+                for (int c = 0; c < size; c++) c + 1: FixedColumnWidth(cellSize),
+              },
+              children: [
                 TableRow(
                   children: [
-                    Builder(
-                      builder: (context) {
-                        final isRowComplete = ColorgramRules.isRowSatisfied(
-                          state.board[r],
-                          level.rowClues[r],
-                        );
-                        return Container(
-                          height: cellSize,
-                          alignment: Alignment.centerRight,
-                          padding: const EdgeInsets.only(right: 6),
-                          child: FittedBox(
-                            fit: BoxFit.scaleDown,
-                            alignment: Alignment.centerRight,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: level.rowClues[r]
-                                  .map(
-                                    (clue) => _buildClueBadge(
-                                      clue,
-                                      level.palette,
-                                      badgeSize,
-                                      isSatisfied: isRowComplete,
-                                    ),
-                                  )
-                                  .toList(),
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-
+                    const SizedBox.shrink(),
                     for (int c = 0; c < size; c++)
-                      GestureDetector(
-                        onTap: () {
-                          vm.toggleCell(r, c);
+                      Builder(
+                        builder: (context) {
+                          final isColComplete = ColorgramRules.isColSatisfied(
+                            state.board,
+                            level.colClues[c],
+                            c,
+                          );
+                          return Container(
+                            height: clueHeight,
+                            alignment: Alignment.bottomCenter,
+                            padding: const EdgeInsets.only(bottom: 4),
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              alignment: Alignment.bottomCenter,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: level.colClues[c]
+                                    .map(
+                                      (clue) => _buildClueBadge(
+                                        clue,
+                                        level.palette,
+                                        badgeSize,
+                                        isSatisfied: isColComplete,
+                                      ),
+                                    )
+                                    .toList(),
+                              ),
+                            ),
+                          );
                         },
-                        onPanStart: (_) {
-                          _lastDraggedCell = r * size + c;
+                      ),
+                  ],
+                ),
+
+                for (int r = 0; r < size; r++)
+                  TableRow(
+                    children: [
+                      Builder(
+                        builder: (context) {
+                          final isRowComplete = ColorgramRules.isRowSatisfied(
+                            state.board[r],
+                            level.rowClues[r],
+                          );
+                          return Container(
+                            height: cellSize,
+                            alignment: Alignment.centerRight,
+                            padding: const EdgeInsets.only(right: 6),
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              alignment: Alignment.centerRight,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: level.rowClues[r]
+                                    .map(
+                                      (clue) => _buildClueBadge(
+                                        clue,
+                                        level.palette,
+                                        badgeSize,
+                                        isSatisfied: isRowComplete,
+                                      ),
+                                    )
+                                    .toList(),
+                              ),
+                            ),
+                          );
                         },
-                        onPanUpdate: (_) {
-                          final cellId = r * size + c;
-                          if (_lastDraggedCell != cellId) {
-                            _lastDraggedCell = cellId;
-                            vm.setCell(r, c, state.selectedTool);
-                          }
-                        },
-                        onLongPress: ref.read(progressRepositoryProvider).longPressToCrossEnabled
-                            ? () {
-                                if (ref.read(progressRepositoryProvider).hapticsEnabled) {
-                                  HapticFeedback.mediumImpact();
-                                }
-                                if (state.board[r][c] == -1) {
-                                  vm.setCell(r, c, 0);
-                                } else {
-                                  vm.setCell(r, c, -1);
-                                }
-                              }
-                            : null,
-                        child: Container(
+                      ),
+
+                      for (int c = 0; c < size; c++)
+                        Container(
                           width: cellSize,
                           height: cellSize,
                           margin: const EdgeInsets.all(1.0),
@@ -755,10 +805,10 @@ class _GameViewState extends ConsumerState<GameView> {
                           ),
                           child: _buildCellContent(state.board[r][c], cellSize),
                         ),
-                      ),
-                  ],
-                ),
-            ],
+                    ],
+                  ),
+              ],
+            ),
           ),
         );
       },
